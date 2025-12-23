@@ -50,11 +50,12 @@ async def main():
                 data = {
                     'ID': count,  # 序号
                     'UserID': entity.id,  # ID (仅供参考)
+                    'Type': chat_type,  # 类型
                     'Title': dialog.name,  # 对话标题
                     'Username': entity.username,  # 用户名 (核心迁移依据)
                     'Link': link,
                     'FullLink': full_link,
-                    'Type': chat_type  # 类型
+                    'Already': ''
                 }
                 dialogs_list.append(data)  # 添加到列表
                 print(f"   - 发现: {data['Title']} (@{data['Username']}) [{chat_type}]")  # 打印发现的对话
