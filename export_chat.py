@@ -40,11 +40,16 @@ async def main():
                 elif getattr(entity, 'megagroup', False):  # 如果是超级群组
                     chat_type = 'Group'
 
+                link = f"@{entity.username}"
+                full_link = f"https://t.me/{entity.username}"
+
                 # 构建数据对象
                 data = {
                     'ID': entity.id,  # ID (仅供参考)
                     'Title': dialog.name,  # 对话标题
                     'Username': entity.username,  # 用户名 (核心迁移依据)
+                    'Link': link,
+                    'FullLink': full_link,
                     'Type': chat_type  # 类型
                 }
                 dialogs_list.append(data)  # 添加到列表
