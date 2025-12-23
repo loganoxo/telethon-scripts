@@ -48,7 +48,7 @@ async def main():
                     'Type': chat_type  # 类型
                 }
                 dialogs_list.append(data)  # 添加到列表
-                print(f"   - 发现: {data['title']} (@{data['username']}) [{chat_type}]")  # 打印发现的对话
+                print(f"   - 发现: {data['Title']} (@{data['Username']}) [{chat_type}]")  # 打印发现的对话
 
         # 将结果保存到 Excel 文件
         if dialogs_list:
