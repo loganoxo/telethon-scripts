@@ -1,4 +1,7 @@
 # 导出账号所有联系人和群组的id,以便于在其他账号重新添加
+# 启动后, 提示Please enter your phone (or bot token): 直接输入你的手机号,必须带上国家区号,如+8613800001234
+# 输入验证码,你的手机或电脑上的 Telegram App(官方客户端)会收到一条来自 "Telegram" 的官方服务消息,里面有 5 位数验证码,输入后回车
+# 一旦验证通过，脚本就会继续执行(显示 登录成功)，并且会在目录下生成 session_old.session 文件,下次再运行脚本时,因为它检测到了这个文件,就不会再让你输入手机号了
 
 import asyncio  # 导入 asyncio 库用于异步编程
 import pandas as pd  # 引入 pandas 库
