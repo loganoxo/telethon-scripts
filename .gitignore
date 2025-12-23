@@ -1,0 +1,20 @@
+.DS_Store
+/.idea/
+/.history/
+test
+*.iml
+secret.txt
+
+# 忽略 Python 编译文件
+__pycache__/
+*.pyc
+
+# 忽略 Telegram Session 文件 (绝对不能泄露!)
+*.session
+*.session-journal
+
+# 忽略 导出的数据文件
+export-result**
+
+# (可选) 如果你希望 export_config.py 也不提交，取消下面注释
+export_config.py
