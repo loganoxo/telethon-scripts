@@ -33,9 +33,11 @@ async def main():
 
                 # 判断对话类型
                 chat_type = 'User'  # 默认为用户
-                if entity.broadcast:  # 如果是广播频道
+
+                # 使用 getattr() 安全访问,如果 entity 没有 broadcast 属性,默认返回 False
+                if getattr(entity, 'broadcast', False):  # 如果是广播频道
                     chat_type = 'Channel'
-                elif entity.megagroup:  # 如果是超级群组
+                elif getattr(entity, 'megagroup', False):  # 如果是超级群组
                     chat_type = 'Group'
 
                 # 构建数据对象
