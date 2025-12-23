@@ -23,6 +23,9 @@ async def main():
         dialogs_list = []  # 初始化列表用于存储对话数据
         print("📥 正在扫描所有对话...")  # 打印扫描提示
 
+        # 1. 定义一个计数器,从 1 开始
+        count = 1
+
         # 遍历账号下的所有对话 (包括群组、频道、私聊)
         async for dialog in client.iter_dialogs():
             entity = dialog.entity  # 获取对话对应的实体对象
@@ -45,7 +48,8 @@ async def main():
 
                 # 构建数据对象
                 data = {
-                    'ID': entity.id,  # ID (仅供参考)
+                    'ID': count,  # 序号
+                    'UserID': entity.id,  # ID (仅供参考)
                     'Title': dialog.name,  # 对话标题
                     'Username': entity.username,  # 用户名 (核心迁移依据)
                     'Link': link,
@@ -54,6 +58,8 @@ async def main():
                 }
                 dialogs_list.append(data)  # 添加到列表
                 print(f"   - 发现: {data['Title']} (@{data['Username']}) [{chat_type}]")  # 打印发现的对话
+                # 计数器加 1,为下一次循环做准备
+                count += 1
 
         # 将结果保存到 Excel 文件
         if dialogs_list:
