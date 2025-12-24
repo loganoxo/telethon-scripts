@@ -1,6 +1,8 @@
-import asyncio  # 导入 asyncio 库用于异步编程和延时等待
-from datetime import datetime, timedelta  # 导入日期时间模块,用于计算下一次运行时间
+import asyncio  # 导入 asyncio 库用于异步编程
+from datetime import datetime
 from telethon import TelegramClient  # 导入 Telethon 客户端核心类
+from telethon.errors import FloodWaitError
+
 import app_config  # 导入你的本地配置文件 (包含 API_ID, API_HASH, SESSION_OLD)
 import send_msg_config  # 导入你的本地配置文件
 
@@ -29,13 +31,16 @@ async def main():
             await client.send_message(entity, send_msg_config.MESSAGE)  # 执行发送操作
             print(f"✅ 发送完成!")  # 打印成功提示
 
-        except Exception as e:
-            # 捕获网络错误或其他异常,防止脚本崩溃停止
-            print(f"❌ 发送失败,原因: {e}")  # 打印错误详情
+        except FloodWaitError as e:
+            # 专门捕获 Telegram 的速率限制错误
+            print(f"⚠️ 触发速率限制, 需要等待 {e.seconds} 秒")  # 打印具体的等待时间
 
-# async with 块结束,自动断开连接
+        except Exception as e:
+            # 捕获其他所有不可预知的异常
+            print(f"❌ 发生错误: {type(e).__name__}: {e}")  # 打印错误类型和详细信息
+
+    # async with 块结束,自动断开连接
 
 
 if __name__ == '__main__':
-    # 注意：如果要长期运行,建议在服务器使用 nohup 或 screen/tmux 运行此脚本
     asyncio.run(main())  # 运行主异步函数
