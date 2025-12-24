@@ -53,7 +53,7 @@ async def main():
 
                 # 2. 发送消息
                 print(
-                    f"📤 [{index + 1}/{total_tasks}] 北京时间 [{current_time}] 正在向 {target} 发送消息: {send_msg_config.MESSAGE}")  # 打印进度日志
+                    f"📤 [{index + 1}/{total_tasks}] 北京时间 [{current_time}] 正在向 {target} 发送消息: {msg}")  # 打印进度日志
                 await client.send_message(entity, msg)  # 执行发送操作
                 print(f"✅ 发送完成!")  # 打印成功提示
 
