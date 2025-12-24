@@ -17,4 +17,6 @@ __pycache__/
 export-result**
 
 # (可选) 如果你希望 export_config.py 也不提交，取消下面注释
+app_config.py
 export_config.py
+send_msg_config.py

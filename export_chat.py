@@ -6,15 +6,16 @@
 import asyncio  # 导入 asyncio 库用于异步编程
 import pandas as pd  # 引入 pandas 库
 from telethon import TelegramClient  # 导入 Telethon 客户端核心类
+import app_config  # 导入本地配置文件
 import export_config  # 导入本地配置文件
 
 
 async def main():
     # 初始化旧账号的客户端实例
     # 首次运行时，会在终端提示输入旧账号的手机号和验证码
-    client = TelegramClient(export_config.SESSION_OLD, export_config.API_ID, export_config.API_HASH)
+    client = TelegramClient(app_config.SESSION_OLD, app_config.API_ID, app_config.API_HASH)
 
-    print(f"🚀 正在启动旧账号 ({export_config.SESSION_OLD})...")  # 打印启动日志
+    print(f"🚀 正在启动旧账号 ({app_config.SESSION_OLD})...")  # 打印启动日志
     # await client.start()  # 建立连接并登录, 用 async with 代替
     async with client:
         me = await client.get_me()  # 获取当前登录用户的信息
