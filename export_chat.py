@@ -19,7 +19,7 @@ async def main():
     # await client.start()  # 建立连接并登录, 用 async with 代替
     async with client:
         me = await client.get_me()  # 获取当前登录用户的信息
-        print(f"✅ 登录成功: {me.first_name} (+{me.phone})")  # 打印登录用户信息
+        print(f"✅ 登录成功: {me.first_name}")  # 打印登录用户信息
 
         dialogs_list = []  # 初始化列表用于存储对话数据
         print("📥 正在扫描所有对话...")  # 打印扫描提示
